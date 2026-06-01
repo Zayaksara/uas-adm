@@ -4,6 +4,7 @@
 #  berubah. Pipeline terisolasi dari web dinamis.
 # ============================================================
 name: Deploy Web Statis (CV + Proxy)
+# trigger awal
 
 on:
   push:

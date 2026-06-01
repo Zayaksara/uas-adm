@@ -4,6 +4,7 @@
 #  sehingga pipeline terisolasi & hemat runner (rubrik "Sangat Baik").
 # ============================================================
 name: Deploy Web Dinamis (Next.js)
+# trigger awal
 
 on:
   push:
