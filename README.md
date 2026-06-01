@@ -129,85 +129,56 @@ git add . && git commit -m "demo: live update" && git push
 
 Web Statis CV pada port 80:
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/e8618f85-14ec-404f-a52a-d35dabfdc1f7" />
 
 
 Web Dinamis Next.js pada port 8080:
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/c8ee4e58-0686-4fb6-9f34-3e0103a7583b" />
 
 
 
 Login admin berhasil (`:8080/admin`):
 
-
-
-```text
-# Tempel output `docker compose ps` di sini
-$ docker compose ps
-```
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/bcb82c19-8046-45b9-ac3d-d4a7ca9a1bfe" />
 
 AWS Security Group (inbound 22, 80, 8080 terbuka):
 
-![Security Group AWS](docs/img/05-security-group.png)
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/9307252b-ae6b-4157-aafb-d8c71b1a7347" />
+
 
 ### 6.2 Automasi Database (MariaDB auto-seed)
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/7d01d13f-6d6d-4d77-a067-f6a0de3c65ea" />
 
-
-```text
-# Tempel output query di atas (tabel + data) di sini
-```
 
 ### 6.3 CI/CD Pipeline (GitHub Actions & Docker Hub)
 
 Kedua workflow centang hijau:
 
-![GitHub Actions hijau](docs/img/07-actions-green.png)
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/ece9617e-574f-4c97-83f2-0850390f0e2d" />
+
 
 Image ter-push ke Docker Hub:
 
-![Docker Hub images](docs/img/08-dockerhub.png)
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/6f8ba66a-fea1-4fa6-826f-85fd94b3159e" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1d3dabf0-160c-4d4c-8dbc-d8088d2f6e5f" />
+
 
 ### 6.4 Live Test — Zero-Touch Deployment & Zero Downtime
 
-Sebelum (teks lama):
-
-![Sebelum](docs/img/09-before.png)
-
-Commit & push perubahan dari lokal:
-
-![git push](docs/img/10-git-push.png)
-
-Workflow berjalan otomatis akibat push:
-
-![Actions running](docs/img/11-actions-running.png)
-
-Sesudah (teks baru muncul otomatis di browser, tanpa sentuh server):
-
-![Sesudah](docs/img/12-after.png)
 
 **Bukti Zero Downtime** — loop `curl` selama proses deploy tetap mengembalikan `200`:
 
-```bash
-while true; do curl -s -o /dev/null -w "%{http_code} " http://localhost; sleep 1; done
-```
-
-![Zero downtime curl loop](docs/img/13-zero-downtime.png)
-
-```text
-# Tempel deretan output (200 200 200 ...) selama deploy di sini
-```
-
-### 6.5 Log Deploy (dari GitHub Actions / EC2)
-
-```text
-# Tempel log tahap "Deploy di EC2": docker compose pull + up -d
-```
+<img width="1919" height="245" alt="image" src="https://github.com/user-attachments/assets/f4e08eaf-7112-4427-bb7d-9fdce95eb561" />
 
 ### Checklist akhir
-- [ ] Web Statis tampil di `:80`
-- [ ] Web Dinamis + login tampil di `:8080`
-- [ ] 3 container `Up` (`docker compose ps`)
-- [ ] Security Group port 22/80/8080 terbuka
-- [ ] MariaDB ter-seed otomatis
-- [ ] 2 workflow Actions hijau + image di Docker Hub
-- [ ] Live test: push → berubah otomatis
-- [ ] Zero downtime terbukti (curl loop `200`)
+- [v] Web Statis tampil di `:80`
+- [v] Web Dinamis + login tampil di `:8080`
+- [v] 3 container `Up` (`docker compose ps`)
+- [v] Security Group port 22/80/8080 terbuka
+- [v] MariaDB ter-seed otomatis
+- [v] 2 workflow Actions hijau + image di Docker Hub
+- [v] Live test: push → berubah otomatis
+- [v] Zero downtime terbukti (curl loop `200`)
