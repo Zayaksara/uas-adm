@@ -129,19 +129,15 @@ git add . && git commit -m "demo: live update" && git push
 
 Web Statis CV pada port 80:
 
-![Web Statis CV port 80](docs/img/01-static-80.png)
+
 
 Web Dinamis Next.js pada port 8080:
 
-![Web Dinamis port 8080](docs/img/02-dynamic-8080.png)
+
 
 Login admin berhasil (`:8080/admin`):
 
-![Login admin](docs/img/03-login-admin.png)
 
-Container berjalan & pemetaan port (`docker compose ps` di EC2):
-
-![docker compose ps](docs/img/04-compose-ps.png)
 
 ```text
 # Tempel output `docker compose ps` di sini
@@ -154,12 +150,7 @@ AWS Security Group (inbound 22, 80, 8080 terbuka):
 
 ### 6.2 Automasi Database (MariaDB auto-seed)
 
-```bash
-docker exec -it app-db-1 mariadb -u uas-zayaksara -pFatih0214 uas-zayaksara \
-  -e "SHOW TABLES; SELECT full_name FROM profile;"
-```
 
-![MariaDB ter-seed](docs/img/06-db-seed.png)
 
 ```text
 # Tempel output query di atas (tabel + data) di sini
