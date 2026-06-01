@@ -1,0 +1,76 @@
+# ============================================================
+#  UAS Administrasi Server — NIM 2388010024
+#  Orkestrasi: proxy (statis + reverse proxy) + Next.js + MariaDB
+#
+#  Lokal (build dari source):   docker compose up -d --build
+#  Produksi (pull dari Docker Hub):
+#       export DOCKERHUB_USERNAME=...   # + isi .env
+#       docker compose pull && docker compose up -d
+# ============================================================
+
+services:
+  # --- Reverse proxy + Web Statis CV (publik) ---
+  proxy:
+    image: ${DOCKERHUB_USERNAME}/uas-portofolio-proxy:latest
+    build:
+      context: .
+      dockerfile: proxy/Dockerfile
+    ports:
+      - "80:80"     # Web Statis CV
+      - "8080:8080" # Web Dinamis (reverse proxy ke Next.js)
+    depends_on:
+      - web-dynamic
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  # --- Web Dinamis: Next.js standalone (TIDAK ekspos port publik) ---
+  web-dynamic:
+    image: ${DOCKERHUB_USERNAME}/uas-portofolio-dynamic:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: db                  # DNS internal -> service "db"
+      DATABASE_PORT: "3306"
+      DATABASE_USER: uas-zayaksara        # user khusus (bukan root)
+      DATABASE_PASSWORD: ${DB_PASSWORD}
+      DATABASE_NAME: uas-zayaksara
+      AUTH_SECRET: ${AUTH_SECRET}
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      AUTH_URL: ${NEXTAUTH_URL}
+      AUTH_TRUST_HOST: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  # --- Database MariaDB (TIDAK ekspos port publik) ---
+  db:
+    image: mariadb:11
+    environment:
+      # Root tidak dipakai aplikasi -> password root dibuat random & dibuang.
+      MARIADB_RANDOM_ROOT_PASSWORD: "yes"
+      MARIADB_DATABASE: uas-zayaksara
+      MARIADB_USER: uas-zayaksara         # akun aplikasi, dibuat otomatis + GRANT ke DB
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql                       # data persisten
+      - ./db:/docker-entrypoint-initdb.d:ro          # auto-seed *.sql saat init
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - appnet
+    restart: unless-stopped
+
+networks:
+  appnet:
+    driver: bridge
+
+volumes:
+  db_data:

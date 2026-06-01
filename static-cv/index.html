@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Porto</title>
+  <meta name="description" content="Curriculum Vitae statis — UAS Administrasi Server" />
+  <style>
+    :root {
+      --ink: #050505;
+      --cream: #fef6e4;
+      --yellow: #ffdb33;
+      --pink: #ff6b97;
+      --blue: #74c0fc;
+      --green: #69db7c;
+      --purple: #b197fc;
+      --orange: #ffa94d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 24px;
+    }
+    .wrap { max-width: 860px; margin: 0 auto; }
+    .nb { border: 2px solid var(--ink); box-shadow: 6px 6px 0 0 var(--ink); background: #fff; }
+    header {
+      padding: 40px 28px;
+      background: var(--yellow);
+      margin-bottom: 28px;
+    }
+    header h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; line-height: 1.1; }
+    header .role { font-size: 18px; font-weight: 700; margin-top: 8px; }
+    .badge {
+      display: inline-block; margin-top: 16px; padding: 6px 12px;
+      background: var(--ink); color: var(--yellow); font-weight: 700; font-size: 14px;
+    }
+    .contact { margin-top: 16px; font-weight: 600; font-size: 14px; }
+    .contact span { display: inline-block; margin-right: 16px; }
+    section { padding: 24px 28px; margin-bottom: 24px; }
+    h2 {
+      display: inline-block; font-size: 22px; font-weight: 800;
+      border: 2px solid var(--ink); box-shadow: 4px 4px 0 0 var(--ink);
+      padding: 6px 14px; margin-bottom: 20px;
+    }
+    .h-edu { background: var(--blue); }
+    .h-skill { background: var(--green); }
+    .h-exp { background: var(--orange); }
+    .h-about { background: var(--purple); }
+    .item { margin-bottom: 18px; }
+    .item h3 { font-size: 17px; font-weight: 800; }
+    .item .meta { font-size: 14px; font-weight: 700; color: #444; }
+    .item p { font-size: 15px; margin-top: 4px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      border: 2px solid var(--ink); box-shadow: 2px 2px 0 0 var(--ink);
+      padding: 6px 12px; font-weight: 700; font-size: 14px; background: var(--pink);
+    }
+    .cta {
+      display: inline-block; margin-top: 8px; padding: 12px 20px;
+      background: var(--yellow); border: 2px solid var(--ink);
+      box-shadow: 4px 4px 0 0 var(--ink); font-weight: 800; text-decoration: none;
+      color: var(--ink); transition: transform .15s, box-shadow .15s;
+    }
+    .cta:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 var(--ink); }
+    footer { text-align: center; padding: 24px; font-weight: 700; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nb">
+      <h1>Muhammad Fatih Khoiri A.</h1>
+      <div class="role">Mahasiswa Informatika &amp; Web Developer &amp; Machine Learning</div>
+      <span class="badge">CV STATIS · UAS 2388010024</span>
+      <div class="contact">
+        <span>mfatihh214@gmail.com</span>
+        <span>+62 899-3333-1111</span>
+        <span>Kabupaten Cirebon, Indonesia</span>
+      </div>
+    </header>
+
+    <section class="nb">
+      <h2 class="h-about">Tentang</h2>
+      <p>Mahasiswa yang antusias di bidang pengembangan web dan cloud computing.
+         Suka belajar teknologi baru dan menyelesaikan masalah lewat kode. Halaman
+         ini adalah <strong>web statis</strong> (HTML/CSS murni) yang di-serve oleh
+         nginx pada port 80.</p>
+    </section>
+
+    <section class="nb">
+      <h2 class="h-edu">Pendidikan</h2>
+      <div class="item">
+        <h3>Universitas Islam Negeri Syekh Nurjati Cirebon</h3>
+        <div class="meta">S1 Informatika · 2022 – sekarang</div>
+        <p>Fokus untuk memperdalam pengetahuan dalam bidang pengembangan teknologi.</p>
+      </div>
+
+      <div class="item">
+        <h3>SMAN 5 Cirebon</h3>
+        <div class="meta">MIPA · 2022 – sekarang</div>
+        <p>Fokus untuk memperdalam pengetahuan dalam bidang pengembangan teknologi.</p>
+      </div>
+
+      <div class="item">
+        <h3>SMPN 2 Banjarbaru</h3>
+        <div class="meta">2022 – sekarang</div>
+        <p>Fokus untuk memperdalam pengetahuan dalam bidang pengembangan teknologi.</p>
+      </div>
+
+      <div class="item">
+        <h3>SMPN 3 Palopo</h3>
+        <div class="meta">2022 – sekarang</div>
+        <p>Fokus untuk memperdalam pengetahuan dalam bidang pengembangan teknologi.</p>
+      </div>
+    </section>
+
+    <section class="nb">
+      <h2 class="h-skill">Keahlian</h2>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">PHP</span>
+        <span class="chip">Laravel</span>
+        <span class="chip">Futsal</span>
+        <span class="chip">FC 23</span>
+        <span class="chip">FC 24</span>
+        <span class="chip">FC 26</span>
+      </div>
+    </section>
+
+    <section class="nb">
+      <h2 class="h-exp">Portofolio Dinamis</h2>
+      <div class="item">
+        <h3>Aplikasi dinamis dengan login &amp; admin CRUD</h3>
+        <p>Versi dinamis dari portofolio ini berjalan terpisah lewat reverse proxy.</p>
+        <a class="cta" href="http://localhost:8080" id="dynamic-link">Buka Portofolio Dinamis →</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 · CV Statis · Muhammad Fatih Khoiri Asim - 2388010024</p>
+    </footer>
+  </div>
+
+  <script>
+    // Arahkan tombol portofolio dinamis ke host yang sama, port 8080.
+    var link = document.getElementById("dynamic-link");
+    if (link && location.hostname) {
+      link.href = location.protocol + "//" + location.hostname + ":8080";
+    }
+  </script>
+</body>
+</html>
