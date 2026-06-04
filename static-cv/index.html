@@ -30,7 +30,20 @@
       padding: 40px 28px;
       background: var(--yellow);
       margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
     }
+    .photo {
+      flex: 0 0 auto;
+      width: 150px; height: 150px;
+      object-fit: cover;
+      border: 2px solid var(--ink);
+      box-shadow: 4px 4px 0 0 var(--ink);
+      background: #fff;
+    }
+    .header-text { flex: 1 1 280px; min-width: 0; }
     header h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; line-height: 1.1; }
     header .role { font-size: 18px; font-weight: 700; margin-top: 8px; }
     .badge {
@@ -71,13 +84,16 @@
 <body>
   <div class="wrap">
     <header class="nb">
-      <h1>Muhammad Fatih Khoiri A.</h1>
-      <div class="role">Mahasiswa Informatika &amp; Web Developer &amp; Machine Learning</div>
-      <span class="badge">CV STATIS · UAS 2388010024</span>
-      <div class="contact">
-        <span>mfatihh214@gmail.com</span>
-        <span>+62 899-3333-1111</span>
-        <span>Kabupaten Cirebon, Indonesia</span>
+      <img class="photo" src="IMG_7329.jpg" alt="Foto Muhammad Fatih Khoiri Asim" />
+      <div class="header-text">
+        <h1>Muhammad Fatih Khoiri A.</h1>
+        <div class="role">Mahasiswa Informatika NIM 2388010024 &amp; Web Developer &amp; Machine Learning</div>
+        <span class="badge">CV STATIS · UAS 2388010024</span>
+        <div class="contact">
+          <span>mfatihh214@gmail.com</span>
+          <span>+62 899-3333-1111</span>
+          <span>Kabupaten Cirebon, Indonesia</span>
+        </div>
       </div>
     </header>
 
