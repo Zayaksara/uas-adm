@@ -165,20 +165,3 @@ Image ter-push ke Docker Hub:
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1d3dabf0-160c-4d4c-8dbc-d8088d2f6e5f" />
 
-
-### 6.4 Live Test — Zero-Touch Deployment & Zero Downtime
-
-
-**Bukti Zero Downtime** — loop `curl` selama proses deploy tetap mengembalikan `200`:
-
-<img width="1919" height="245" alt="image" src="https://github.com/user-attachments/assets/f4e08eaf-7112-4427-bb7d-9fdce95eb561" />
-
-### Checklist akhir
-- [v] Web Statis tampil di `:80`
-- [v] Web Dinamis + login tampil di `:8080`
-- [v] 3 container `Up` (`docker compose ps`)
-- [v] Security Group port 22/80/8080 terbuka
-- [v] MariaDB ter-seed otomatis
-- [v] 2 workflow Actions hijau + image di Docker Hub
-- [v] Live test: push → berubah otomatis
-- [v] Zero downtime terbukti (curl loop `200`)
