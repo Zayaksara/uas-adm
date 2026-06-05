@@ -75,6 +75,52 @@ Database `uas-zayaksara` dibuat & di-seed otomatis dari `db/*.sql` saat containe
 
 ## 4. Cara Menjalankan
 
+### 4.0 Persiapan Server (AWS EC2): Instalasi Docker Engine
+
+Dijalankan **sekali** di EC2 (Ubuntu) memakai repository resmi Docker.
+
+```bash
+# 1) Bersihkan paket lama (jika ada)
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do
+  sudo apt-get remove -y $pkg
+done
+
+# 2) Tambahkan repository resmi Docker + GPG key
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# 3) Instal Docker Engine + CLI + Compose plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# 4) Aktifkan service & jalankan saat boot
+sudo systemctl enable --now docker
+
+# 5) Agar user `ubuntu` bisa pakai Docker tanpa sudo
+sudo usermod -aG docker $USER && newgrp docker
+```
+
+**Verifikasi (bukti Docker Engine sudah terinstal):**
+
+```bash
+docker --version              # mis. Docker version 27.x, build ...
+docker compose version        # mis. Docker Compose version v2.x
+sudo systemctl status docker  # active (running)
+docker run --rm hello-world   # uji menarik & menjalankan image
+```
+
+> Screenshot bukti instalasi (output `docker --version`, `docker compose version`, dan `systemctl status docker` = `active (running)`):
+
+<!-- TODO: tempel screenshot terminal EC2 di sini -->
+<img width="900" alt="Bukti instalasi Docker Engine di EC2" src="" />
+
 ### Lokal (build dari source)
 ```bash
 cp .env.production.example .env   # isi nilainya
@@ -174,6 +220,7 @@ Image ter-push ke Docker Hub:
 <img width="1919" height="245" alt="image" src="https://github.com/user-attachments/assets/f4e08eaf-7112-4427-bb7d-9fdce95eb561" />
 
 ### Checklist akhir
+- [v] Docker Engine + Compose plugin terinstal di EC2 (`docker --version`)
 - [v] Web Statis tampil di `:80`
 - [v] Web Dinamis + login tampil di `:8080`
 - [v] 3 container `Up` (`docker compose ps`)
