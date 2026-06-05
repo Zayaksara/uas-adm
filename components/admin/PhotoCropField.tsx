@@ -53,9 +53,9 @@ export function PhotoCropField({
   useEffect(() => {
     const el = boxRef.current;
     if (!el) return;
+    // ResizeObserver fires once on observe, so it sets the initial width too.
     const ro = new ResizeObserver(() => setViewport(el.clientWidth));
     ro.observe(el);
-    setViewport(el.clientWidth);
     return () => ro.disconnect();
   }, [src]);
 
@@ -111,9 +111,12 @@ export function PhotoCropField({
     setOffset({ x: (viewport - w * base) / 2, y: (viewport - h * base) / 2 });
   }
 
-  // Re-sync the crop whenever framing settles.
+  // Re-sync the crop when framing settles (debounced so dragging/zooming
+  // doesn't fire canvas.toBlob on every pointer move).
   useEffect(() => {
-    if (src && nat.w) void syncCrop();
+    if (!src || !nat.w) return;
+    const t = setTimeout(() => void syncCrop(), 120);
+    return () => clearTimeout(t);
   }, [src, nat.w, syncCrop]);
 
   // Pointer drag to pan.
