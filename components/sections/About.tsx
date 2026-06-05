@@ -72,7 +72,7 @@ function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-2 border-nb-ink bg-nb-cream p-2">
       <p className="text-xs uppercase text-zinc-500">{label}</p>
-      <p className="break-words">{value}</p>
+      <p className="wrap-break-words">{value}</p>
     </div>
   );
 }

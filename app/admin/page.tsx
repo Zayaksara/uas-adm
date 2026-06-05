@@ -28,6 +28,7 @@ import {
   SelectField,
 } from "@/components/admin/ui";
 import { ActionForm } from "@/components/admin/ActionForm";
+import { PhotoCropField } from "@/components/admin/PhotoCropField";
 
 export const dynamic = "force-dynamic";
 
@@ -86,7 +87,7 @@ export default async function AdminDashboard() {
               </div>
             )}
             <div className="flex-1">
-              <FileField label="Foto (upload)" name="photo" hint="Maks 5 MB · jpg/png" />
+              <PhotoCropField name="photo" hint="Maks 5 MB · geser & zoom untuk fokus ke profil." />
             </div>
           </div>
           <Field label="GitHub URL" name="github_url" defaultValue={profile.github_url} />
