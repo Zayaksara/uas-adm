@@ -55,6 +55,20 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Siapkan & rapikan folder app di EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            mkdir -p ~/app
+            # Seed lama bisa ter-own root (sisa `sudo docker compose`), bikin
+            # untar SCP gagal "Permission denied". Reset kepemilikan dulu.
+            sudo chown -R "$USER":"$USER" ~/app
+            # Hapus db lama agar untar SCP membuat ulang dengan bersih.
+            rm -rf ~/app/db
+
       - name: Salin docker-compose.yml + seed DB ke EC2
         uses: appleboy/scp-action@v0.1.7
         with:
