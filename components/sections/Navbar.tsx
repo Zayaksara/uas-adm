@@ -37,7 +37,7 @@ export default function Navbar({ name }: { name: string }) {
     <header className="sticky top-0 z-40 border-b-2 border-nb-ink bg-nb-yellow">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-16">
         <a href="#home" className="text-xl font-extrabold tracking-tight nb-focus">
-          {name.split(" ")[0] || "Portofolio"}
+          {name.split(" ")[1] || "Portofolio"}
           <span className="text-nb-pink">.</span>
         </a>
 
