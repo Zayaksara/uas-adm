@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portofolio Saya",
+  title: "Muhammad Fatih Khoiri Asim - 2388010024",
   description:
     "Portofolio pribadi — pendidikan, skills, prestasi, dan tentang saya.",
 };
