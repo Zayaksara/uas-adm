@@ -55,13 +55,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Salin docker-compose.yml ke EC2
+      - name: Salin docker-compose.yml + seed DB ke EC2
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "docker-compose.yml"
+          source: "docker-compose.yml,db"
           target: "~/app"
 
       - name: Deploy di EC2 (zero-downtime)

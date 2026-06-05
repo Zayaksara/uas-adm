@@ -43,6 +43,11 @@ export default function Hero({ profile }: { profile: Profile }) {
           <p className="max-w-xl text-lg leading-relaxed text-zinc-700">
             {profile.tagline}
           </p>
+          <p className="max-w-xl text-lg leading-relaxed">
+            <mark className="bg-nb-yellow px-1.5 py-0.5 font-bold text-nb-ink [-webkit-box-decoration-break:clone] [box-decoration-break:clone]">
+              {profile.bio}
+            </mark>
+          </p>
 
           <div className="flex flex-wrap items-center gap-3">
             <a href="#tentang" className="nb-btn bg-nb-yellow nb-focus">
