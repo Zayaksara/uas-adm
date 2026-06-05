@@ -89,4 +89,7 @@ jobs:
             echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
             docker compose pull web-dynamic
             docker compose up -d web-dynamic
-            docker image prune -f
+            # Prune opsional — jangan gagalkan deploy kalau prune lain sedang
+            # berjalan ("a prune operation is already running") atau tak ada
+            # yang perlu dibersihkan.
+            docker image prune -f || true
