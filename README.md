@@ -87,7 +87,6 @@ Database `uas-zayaksara` dibuat & di-seed otomatis dari `db/*.sql` saat containe
 ### Security Group AWS (wajib dibuka)
 | Port | Protokol | Sumber | Fungsi |
 | :-- | :-- | :-- | :-- |
-| 22 | TCP | IP kamu | SSH |
 | 80 | TCP | 0.0.0.0/0 | Web Statis CV |
 | 8080 | TCP | 0.0.0.0/0 | Web Dinamis Next.js |
 
