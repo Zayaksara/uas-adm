@@ -92,7 +92,7 @@ export async function getProfile(): Promise<Profile> {
 export async function getEducation(): Promise<Education[]> {
   try {
     return await query<Row<Education>>(
-      "SELECT * FROM education ORDER BY start_year DESC, id DESC",
+      "SELECT * FROM education ORDER BY id ASC",
     );
   } catch {
     return [];
