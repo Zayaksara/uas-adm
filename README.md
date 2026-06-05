@@ -211,6 +211,7 @@ Image ter-push ke Docker Hub:
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1d3dabf0-160c-4d4c-8dbc-d8088d2f6e5f" />
 
+<<<<<<< HEAD
 
 ### 6.4 Live Test — Zero-Touch Deployment & Zero Downtime
 
@@ -229,3 +230,5 @@ Image ter-push ke Docker Hub:
 - [v] 2 workflow Actions hijau + image di Docker Hub
 - [v] Live test: push → berubah otomatis
 - [v] Zero downtime terbukti (curl loop `200`)
+=======
+>>>>>>> ee190517472756102dd615c8c89f840c82c110d4
